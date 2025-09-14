@@ -21,6 +21,8 @@ export default defineConfig(({ mode }) => {
         },
       },
       preview: {
+        host: '0.0.0.0',
+        port: 5000,
         allowedHosts: ["nanobanan-02-1-webile.replit.app"]
       }
     };
