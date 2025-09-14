@@ -19,6 +19,9 @@ export default defineConfig(({ mode }) => {
         hmr: {
           clientPort: 443,
         },
+      },
+      preview: {
+        allowedHosts: ["nanobanan-02-1-webile.replit.app"]
       }
     };
 });
