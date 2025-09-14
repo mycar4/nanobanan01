@@ -1,9 +1,12 @@
-[[ports]]
-localPort = 5000
-externalPort = 80
+modules = ["nodejs-20", "web"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
 
 [workflows]
-runButton = "Run Nanobanan"
+runButton = "Project"
 
 [[workflows.workflow]]
 name = "Project"
@@ -26,14 +29,11 @@ waitForPort = 5000
 [workflows.workflow.metadata]
 outputType = "webview"
 
-[[workflows.workflow]]
-name = "Run Nanobanan"
-author = 44602964
-mode = "sequential"
+[[ports]]
+localPort = 5000
+externalPort = 80
 
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "cd nanobanan02 && npm run dev"
-
-[agent]
-expertMode = true
+[deployment]
+deploymentTarget = "autoscale"
+run = ["npx", "vite", "preview", "--host", "0.0.0.0", "--port"]
+build = ["npm", "run", "build"]
